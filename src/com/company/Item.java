@@ -9,4 +9,7 @@ public abstract class Item {
     public abstract void setName(String name);
 
     public abstract void setPath(Path path);
+    public   Path getPath(){
+        return path;
+    }
 }

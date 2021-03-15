@@ -7,7 +7,26 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Catalog {
-    private List<File> lst;
+    private List<Item> lst;
+
+    public Catalog() {
+        lst = new ArrayList<>();
+    }
+
+    public void setLst(List<Item> lst) {
+        this.lst = lst;
+    }
+
+    public List<Item> getLst() {
+        return lst;
+    }
+
+    public void add(Item f) {
+        lst.add(f);
+    }
+
+}
+    /* private List<File> lst;
 
     public Catalog() {
         lst = new ArrayList<>();
@@ -30,6 +49,6 @@ public class Catalog {
 
         }
     }
+*/
 
 
-}
