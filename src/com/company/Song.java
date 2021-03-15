@@ -1,14 +1,21 @@
 package com.company;
 
-public  class Song {
-    protected String ttile;
-    protected String artist;
+import java.nio.file.Path;
 
-    public void setTtile(String title){
+public  class Song extends Item{
+
+    private String singer;
+    @Override
+    public void setName(String name){
 
     }
 
-    public void setArtist(String artist){
+    @Override
+    public void setPath(Path path) {
+
+    }
+
+    public void setSinger(String singer){
 
     }
 }

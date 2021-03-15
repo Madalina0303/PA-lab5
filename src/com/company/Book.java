@@ -1,15 +1,23 @@
 package com.company;
 
-public  class Book {
-    protected String title;
-    protected String author;
+import java.nio.file.Path;
 
-    public void setName(String title){
+public class Book extends Item {
+
+    private String author;
+
+    @Override
+    public void setName(String name) {
 
     }
 
-   public void setAuthor(String author){
+    @Override
+    public void setPath(Path path) {
 
-   }
+    }
+
+    public void setAuthor(String author) {
+
+    }
 
 }
