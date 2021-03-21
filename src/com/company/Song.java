@@ -2,20 +2,19 @@ package com.company;
 
 import java.nio.file.Path;
 
-public  class Song extends Item{
+public class Song extends Item {
 
     private String singer;
-    @Override
-    public void setName(String name){
 
+    public Song(String id,String path) {
+        super(id,path);
+    }
+   /* public  Song(String path){
+        super(path);
     }
 
-    @Override
-    public void setPath(Path path) {
-
-    }
-
-    public void setSinger(String singer){
+    */
+    public void setSinger(String singer) {
 
     }
 }

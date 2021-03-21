@@ -1,16 +1,36 @@
 package com.company;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.awt.*;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
-public class Catalog {
+
+public class Catalog implements Serializable {
+    private String name;
     private List<Item> lst;
+    private String pth;
 
     public Catalog() {
         lst = new ArrayList<>();
+    }
+
+    public Catalog(String pth) {
+        try {
+            lst = new ArrayList<>();
+            // stergem daca exista
+
+            if (Files.exists(Paths.get(pth))) {
+                Files.delete(Paths.get(pth));
+            }
+            //this.pth = Files.createFile(pth);
+            this.pth = pth;
+        } catch (Exception e) {
+            System.err.println(" !!!!!!!!!!!!!Unexpected error");
+        }
     }
 
     public void setLst(List<Item> lst) {
@@ -22,7 +42,79 @@ public class Catalog {
     }
 
     public void add(Item f) {
-        lst.add(f);
+        try {
+            lst.add(f);
+        } catch (NullPointerException e) {
+            System.err.println("Asta nu se prinde dar nu inteleg ce vrea " + e);
+        }
+    }
+
+    public void list() {
+        for (Item i : lst) {
+            System.out.println(i.getName());
+        }
+    }
+
+    public void play() {
+        try {
+            Desktop d = Desktop.getDesktop();
+            for (Item i : lst) {
+                d.open(Paths.get(i.getPath()).toFile());
+
+            }
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+
+        }
+//        try {
+//            Desktop d = Desktop.getDesktop();
+//            d.open(Paths.get(pth).toFile());
+//        } catch (Exception e) {
+//            System.err.println(e.getMessage());
+//
+//        }
+    }
+
+    public String getPth() {
+        return pth;
+    }
+
+    public Item findById(String id) {
+        return (Item) lst.stream().filter(d -> d.getId().equals(id)).findFirst().orElse(null);
+//        for (Item i : lst) {
+//              System.out.println(i.getId());
+//            }
+    }
+
+
+    public void save() throws IOException {
+
+        String s = this.pth;
+
+        try (var oos = new ObjectOutputStream(new FileOutputStream(s))) {
+            oos.writeObject(this);
+
+        }
+
+    }
+
+    public void load(String path) {
+
+        //  Catalog c = null;
+        try (var sursa = new ObjectInputStream(new FileInputStream(path))) {
+            Catalog c = (Catalog) sursa.readObject();
+            this.pth = c.getPth();
+            this.name = c.name;
+            this.lst = c.getLst();
+
+        } catch (FileNotFoundException e) {
+            System.err.println("Lipsa fisier " + e);
+        } catch (IOException e) {
+            System.err.println("Eroare " + e);
+        } catch (ClassNotFoundException e) {
+            System.err.println("Nu s-a gasit clasa " + e);
+        }
+
     }
 
 }

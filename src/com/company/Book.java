@@ -6,14 +6,13 @@ public class Book extends Item {
 
     private String author;
 
-    @Override
-    public void setName(String name) {
-
+   /* public Book(String path) {
+        super(path);
     }
 
-    @Override
-    public void setPath(Path path) {
-
+    */
+    public Book(String id, String path){
+        super(id, path);
     }
 
     public void setAuthor(String author) {
