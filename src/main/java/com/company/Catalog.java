@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 
 public class Catalog implements Serializable {
@@ -115,6 +116,40 @@ public class Catalog implements Serializable {
             System.err.println("Nu s-a gasit clasa " + e);
         }
 
+    }
+
+    public void readComand() {
+        System.out.println("add + argument");
+        System.out.println("list");
+        System.out.println("play");
+        System.out.println("save");
+        System.out.println("load + argument");
+        Scanner s = new Scanner(System.in);
+        String arg, arg1;
+        String comand = s.next();
+        switch (comand) {
+            case "add":
+                arg = s.next();
+                this.add(this.findById(arg));
+                break;
+            case "list":
+                this.list();
+                break;
+            case "play":
+                this.play();
+                break;
+            case "save":
+                try {
+                    this.save();
+                } catch (IOException e) {
+                    System.err.println("Exceptie la save " + e);
+                }
+                break;
+            case "load":
+                arg1 = s.next();
+                this.load(arg1);
+                break;
+        }
     }
 
 }

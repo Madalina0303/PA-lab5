@@ -2,12 +2,18 @@ package com.company;
 
 import java.io.Serializable;
 import java.nio.file.Path;
+import java.util.HashMap;
+import java.util.Map;
 
 public abstract class Item implements Serializable {
     private String id;
     private String name;
     private String path;
+    private Map<String,Object>tags=new HashMap<>();
 
+     public void addTag(String key, Object obj){
+         tags.put(key,obj);
+     }
 
     public Item(String id,String name, String path){
         System.out.println("ce vrei ????");

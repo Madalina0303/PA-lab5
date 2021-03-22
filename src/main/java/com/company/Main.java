@@ -27,6 +27,8 @@ public class Main {
         Catalog test= CatalogUtil.load("C:\\Users\\40753\\Desktop\\PA-laborator\\lab5\\catalog2.ser");
       //  if(test!=null)
        // test.findById("bestSong");
-        CatalogUtil.view(test.findById("bestSong"));
+       // CatalogUtil.view(test.findById("bestSong"));
+        Comand r=new ReportComand();
+        r.execute(c);
     }
 }
