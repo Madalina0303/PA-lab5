@@ -7,13 +7,15 @@ import java.nio.file.Paths;
 public class Main {
 
     public static void main(String[] args) throws IOException {
+        System.out.println("HELOOOOO ");
+
         String pathC = "C:\\Users\\40753\\Desktop\\PA-laborator\\lab5\\catalog2.ser";
         //System.out.println(Paths.get(pathC));
         // Catalog c = new Catalog(Paths.get(pathC));
         Catalog c = new Catalog(pathC);
         String pathB = "C:\\Users\\40753\\Downloads\\lexyacc.pdf";
         //Book b = new Book(Paths.get(pathB));
-        Book b = new Book("bestBook",pathB);
+        Book b = new Book("bestBook",pathB,"Autor");
 
         String pathS = "D:\\an 1\\semestrul 1\\engleza\\joc.mp3";
 
@@ -28,7 +30,20 @@ public class Main {
       //  if(test!=null)
        // test.findById("bestSong");
        // CatalogUtil.view(test.findById("bestSong"));
-        Comand r=new ReportComand();
-        r.execute(c);
+ /*
+        try {
+            Comand r=new InfoComand();
+            r.execute(c);
+        } catch (Exception e) {
+            System.err.println("Eroare la apel info comand " +e);
+        }
+       */
+        try {
+            Comand r = new InfoComand();
+           // r.execute(c);
+        }catch (Exception e){
+            System.err.println("eraoare la info" +e);
+        }
+
     }
 }

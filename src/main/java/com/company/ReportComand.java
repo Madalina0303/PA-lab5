@@ -30,8 +30,12 @@ public class ReportComand implements Comand {
         cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
         Map<String, Object> inp = new HashMap<>();
         inp.put("title", "Catalog-continut");
-        inp.put("Book", c.getLst().get(0).getPath());
-        inp.put("Song", c.getLst().get(1).getPath());
+
+        //  inp.put("Book", c.getLst().get(0));
+        Item i = new Book("id", "C:\\Users\\40753\\Downloads\\lexyacc.pdf", "Cineva");
+        inp.put("book", i);
+        inp.put("systems", c.getLst());
+        //inp.put("Song", c.getLst().get(1).getPath());
         //c.getLst().get(0).addTag("Book","Carte");
         Template template;
         try {

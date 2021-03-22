@@ -6,16 +6,15 @@ public class Book extends Item {
 
     private String author;
 
-   /* public Book(String path) {
-        super(path);
-    }
 
-    */
-    public Book(String id, String path){
+
+    public Book(String id, String path,String author){
         super(id, path);
+
     }
 
     public void setAuthor(String author) {
+
 
     }
 
